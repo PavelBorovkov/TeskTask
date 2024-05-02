@@ -11,6 +11,7 @@ namespace TestTask.Application.Interfaces
     public interface ITestTaskDbContext
     {
         DbSet<Product> Products { get; set; }
+        DbSet<Coin> Coins { get; set; }
 
         //отвечает за сохранение данных в базе
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);

@@ -16,7 +16,11 @@ namespace TestTask.Application.Products.Command.UpdateProduct
             RuleFor(updateProductCommand =>
             updateProductCommand.Name).NotEqual(string.Empty);
             RuleFor(updateProductCommand =>
-            updateProductCommand.Price).NotEqual(decimal.Zero);
+            updateProductCommand.Price)
+                .GreaterThanOrEqualTo(decimal.Zero)
+                .NotEqual(decimal.Zero); ;
+            RuleFor(createProductCommand =>
+            createProductCommand.Quantity).GreaterThanOrEqualTo(0);
         }
     }
 }
