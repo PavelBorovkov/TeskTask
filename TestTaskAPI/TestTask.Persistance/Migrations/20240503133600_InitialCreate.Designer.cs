@@ -12,7 +12,7 @@ using TestTask.Persistance;
 namespace TestTask.Persistance.Migrations
 {
     [DbContext(typeof(TestTaskDbContext))]
-    [Migration("20240503063705_InitialCreate")]
+    [Migration("20240503133600_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,6 +57,10 @@ namespace TestTask.Persistance.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ImgLink")
+                        .IsRequired()
+                        .HasColumnType("string");
 
                     b.Property<string>("Name")
                         .IsRequired()

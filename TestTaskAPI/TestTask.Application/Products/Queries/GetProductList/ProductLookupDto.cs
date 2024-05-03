@@ -15,6 +15,7 @@ namespace TestTask.Application.Products.Queries.GetProductList
         public string Name { get; set; }
         public decimal Price { get; set; }
         public int Quantity { get; set; }
+        public string? ImgLink { get; set; }
         public void Mapping(Profile profile)
         {
             profile.CreateMap<Product, ProductLookupDto>()
@@ -25,7 +26,9 @@ namespace TestTask.Application.Products.Queries.GetProductList
                 .ForMember(productDto => productDto.Price,
                 opt => opt.MapFrom(product => product.Price))
                 .ForMember(productDto => productDto.Quantity,
-                opt => opt.MapFrom(product => product.Quantity));
+                opt => opt.MapFrom(product => product.Quantity))
+                .ForMember(productDto => productDto.ImgLink,
+                opt => opt.MapFrom(product => product.ImgLink));
         }
     }
 }

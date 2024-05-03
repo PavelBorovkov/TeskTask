@@ -1,0 +1,35 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+
+  margin-bottom: 60px;
+  margin-top:10px;
+}
+
+#totalSum{
+    font-weight:700;
+}
+
+#totalSumPay{
+    font-weight: 700;
+}
+.image{
+    width:60px;
+}
+.productCard{
+    display:inline-flex;
+    margin:10px;
+}

@@ -12,5 +12,6 @@ namespace TestTask.Application.Products.Command.CreateProduct
         public string Name { get; set; } = null!;
         public int Quantity { get; set; }
         public decimal Price { get; set; }
+        public string? ImgLink { get; set; }
     }
 }

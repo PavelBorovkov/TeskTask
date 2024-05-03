@@ -29,6 +29,7 @@ namespace TestTask.Application.Products.Queries.GetProductList
             {
                 productQuery = productQuery.Where(p => p.Name.Contains(request.Name));
             }
+
             return new ProductListVm { Products = productQuery.ToList() };
         }
     }

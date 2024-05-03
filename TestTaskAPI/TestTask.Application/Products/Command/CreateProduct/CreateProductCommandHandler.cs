@@ -23,7 +23,8 @@ namespace TestTask.Application.Products.Command.CreateProduct
                 Id = Guid.NewGuid(),
                 Name = request.Name,
                 Quantity = request.Quantity,
-                Price = request.Price
+                Price = request.Price,
+                ImgLink= request.ImgLink
             };
             await _DbContext.Products.AddAsync(product, cancellationToken);
             await _DbContext.SaveChangesAsync(cancellationToken);

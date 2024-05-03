@@ -29,6 +29,7 @@ namespace TestTask.Application.Products.Command.UpdateProduct
             entity.Price = request.Price;
             entity.Quantity = request.Quantity;
             entity.Name = request.Name;
+            entity.ImgLink=request.ImgLink;
 
             await _dbContext.SaveChangesAsync(cancellationToken);
             return entity;

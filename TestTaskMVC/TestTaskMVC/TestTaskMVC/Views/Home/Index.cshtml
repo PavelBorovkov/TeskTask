@@ -1,0 +1,55 @@
+﻿@model TestTaskMVC.Models.CombinedModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<body>
+    <h3>Выбор Напитка</h3>
+    <div class="drinks">
+
+        @foreach(var product in Model.Products)
+        {
+
+            <div class="productCard">
+                <img src="@product.ImgLink" role="button" onclick="myFunction('@product.Id','@product.Price')" alt="изображение товара" width=100 height=100>
+                <div>
+                    @product.Name <span style="font-weight: bold;">@product.Price руб.</span>
+                    <div>Остаток: @product.Quantity шт</div>
+                    <div>Выбрано: <span id=@product.Id>0</span></div>
+                </div>
+                
+            </div>
+        }
+
+        @*<table class="table table-striped table-hover table-bordered">
+            <tbody>
+                @foreach (var product in Model.Products)
+                {
+                    <tr>
+                        <td class="image">
+                            <img src="@product.ImgLink" role="button" alt="текст" width=80 height=60>
+                        </td>
+                        <th>@product.Name</th>
+                        <th>@product.Price руб</th>
+                        <th>@product.Quantity шт</th>
+                    </tr>
+                }
+            </tbody>
+        </table>*@
+    </div>
+    <h3>Оплата</h3>
+    <div class="coins">
+        @foreach(var coin in Model.Coins)
+        {
+                <button class="btn btn-sm btn-primary coin-button" value=@coin.Value>+@coin.Value руб </button>
+          
+        }
+    </div>
+
+    <div id="total">Внесенная сумма: <span id="totalSum">0</span></div>
+    <div id="total">Сумма покупки: <span id="totalSumPay">0</span></div>
+    <div id="change">Сдача: <span id="changeSum">0</span></div>
+    <button class="btn btn-sm btn-success">Оплатить</button>
+</body>

@@ -18,6 +18,7 @@ namespace TestTask.Persistance.EntityTypeConfigurations
             builder.Property(x => x.Name).HasMaxLength(50);
             builder.Property(x => x.Quantity).HasColumnType("integer");
             builder.Property(x=>x.Price).HasColumnType("decimal(10,2)");
+            builder.Property(x=>x.ImgLink).HasColumnType("string");
         }
     }
 }
