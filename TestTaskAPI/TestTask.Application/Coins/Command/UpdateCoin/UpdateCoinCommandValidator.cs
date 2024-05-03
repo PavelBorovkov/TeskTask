@@ -12,7 +12,7 @@ namespace TestTask.Application.Coins.Command.UpdateCoin
         public UpdateCoinCommandValidator()
         {
             RuleFor(updateCoinCommand =>
-            updateCoinCommand.Id).NotEqual(null);
+            updateCoinCommand.Id).GreaterThanOrEqualTo(0);
             RuleFor(updateCoinCommand =>
             updateCoinCommand.Value).GreaterThanOrEqualTo(0);
             RuleFor(updateCoinCommand =>

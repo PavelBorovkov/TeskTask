@@ -8,14 +8,17 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{389CCFAA-9287-47F9-9FCC-113EB3B727A6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{213F97A3-F684-4F66-B43F-BE78B2DE4223}"
+	ProjectSection(SolutionItems) = preProject
+		TestTask.Persistance\TestTaskDbContext.cs = TestTask.Persistance\TestTaskDbContext.cs
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTask.Application", "TestTask.Application\TestTask.Application.csproj", "{6F1B9658-8650-41F1-BC59-1482468FC052}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestTask.Application", "TestTask.Application\TestTask.Application.csproj", "{6F1B9658-8650-41F1-BC59-1482468FC052}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTask.Domain", "TestTask.Domain\TestTask.Domain.csproj", "{3D686220-0069-4292-9B4E-6C6296F36320}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestTask.Domain", "TestTask.Domain\TestTask.Domain.csproj", "{3D686220-0069-4292-9B4E-6C6296F36320}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTask.Persistance", "TestTask.Persistance\TestTask.Persistance.csproj", "{F3E99ADC-6A59-446F-A1AC-26A1FB19699D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestTask.Persistance", "TestTask.Persistance\TestTask.Persistance.csproj", "{F3E99ADC-6A59-446F-A1AC-26A1FB19699D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTask.WebApi", "TestTask.WebApi\TestTask.WebApi.csproj", "{F4785413-836A-430F-A62A-5B34485D679E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestTask.WebApi", "TestTask.WebApi\TestTask.WebApi.csproj", "{F4785413-836A-430F-A62A-5B34485D679E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
