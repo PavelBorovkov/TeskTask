@@ -12,7 +12,7 @@ namespace TestTask.Application.Coins.Command.UpdateCoin
     {
         public int Id { get; set; }
         public int Value { get; set; }
-        public bool Access { get; set; }
         public int Quantity { get; set; }
+        public bool Access { get; set; }
     }
 }

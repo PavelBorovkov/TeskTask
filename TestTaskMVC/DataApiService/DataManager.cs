@@ -8,12 +8,14 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
+
 namespace DataApiService
 {
     public interface IDataManager
     {
         Task<T> GetItems<T>(string pointName, Dictionary<string, string> getParams = null);
-        Task<T> GetPostItems<T>(string pointName, Dictionary<string, string> getParams);
+        Task<T> PostRequest<T>(string pointName, Dictionary<string, string> getParams);
+        Task<T> PutRequest<T>(string pointName, T Parameters);
     }
 
     public class BaseApiOptions
@@ -64,7 +66,7 @@ namespace DataApiService
 
         }
 
-        public async Task<T> GetPostItems<T>(string pointName, Dictionary<string, string> getParams)
+        public async Task<T> PostRequest<T>(string pointName, Dictionary<string, string> getParams)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -76,6 +78,30 @@ namespace DataApiService
                     var content = new StringContent(paramString, Encoding.UTF8, "application/json-patch+json");
 
                     var response = await client.PostAsync(urlService, content);
+                    string responseContent = await response.Content.ReadAsStringAsync();
+                    var result = JsonConvert.DeserializeObject<T>(responseContent);
+                    return result;
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+        }
+
+        public async Task<T> PutRequest<T>(string pointName, T Parameters)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    string urlService = _options.GetUrlApiService(pointName);
+                    string paramString = JsonConvert.SerializeObject(Parameters);
+
+                    var content = new StringContent(paramString, Encoding.UTF8, "application/json-patch+json");
+
+                    var response = await client.PutAsync(urlService, content);
                     string responseContent = await response.Content.ReadAsStringAsync();
                     var result = JsonConvert.DeserializeObject<T>(responseContent);
                     return result;

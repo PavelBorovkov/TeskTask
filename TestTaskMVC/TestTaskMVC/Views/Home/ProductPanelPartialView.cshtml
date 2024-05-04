@@ -1,0 +1,15 @@
+﻿
+@model TestTaskMVC.Models.CombinedModel
+
+@foreach (var product in Model.Products)
+{
+
+    <div class="productCard">
+        <img src="@product.ImgLink" role="button" onclick="ProductChange('@product.Id','@product.Name','@product.Price','@product.Quantity','@product.ImgLink')" alt="изображение товара" width=100 height=100>
+        <div>
+            @product.Name <span style="font-weight: bold;">@product.Price руб.</span>
+            <div>Остаток: @product.Quantity шт</div>
+        </div>
+
+    </div>
+}

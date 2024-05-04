@@ -7,17 +7,16 @@
 
 <body>
     <h3>Выбор Напитка</h3>
-    <div class="drinks">
+    <div id="ProductPanel" class="drinks">
 
         @foreach(var product in Model.Products)
         {
 
             <div class="productCard">
-                <img src="@product.ImgLink" role="button" onclick="myFunction('@product.Id','@product.Price')" alt="изображение товара" width=100 height=100>
+                <img src="@product.ImgLink" role="button" onclick="ProductChange('@product.Id','@product.Name','@product.Price','@product.Quantity','@product.ImgLink')" alt="изображение товара" width=100 height=100>
                 <div>
                     @product.Name <span style="font-weight: bold;">@product.Price руб.</span>
                     <div>Остаток: @product.Quantity шт</div>
-                    <div>Выбрано: <span id=@product.Id>0</span></div>
                 </div>
                 
             </div>
@@ -40,16 +39,16 @@
         </table>*@
     </div>
     <h3>Оплата</h3>
-    <div class="coins">
-        @foreach(var coin in Model.Coins)
+    <div id="CoinPanel" class="coins">
+        @foreach (var coin in Model.Coins)
         {
-                <button class="btn btn-sm btn-primary coin-button" value=@coin.Value>+@coin.Value руб </button>
-          
+            <button class="btn btn-sm btn-primary coin-button" onclick="CoinChange('@coin.Id','@coin.Value','@coin.Quantity','@coin.Access')">+@coin.Value руб</button>
+
         }
     </div>
 
     <div id="total">Внесенная сумма: <span id="totalSum">0</span></div>
     <div id="total">Сумма покупки: <span id="totalSumPay">0</span></div>
     <div id="change">Сдача: <span id="changeSum">0</span></div>
-    <button class="btn btn-sm btn-success">Оплатить</button>
+    <button onclick="giveChange()" class="btn btn-sm btn-success">Получить сдачу</button>
 </body>

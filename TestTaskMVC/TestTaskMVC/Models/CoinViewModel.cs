@@ -7,7 +7,7 @@ namespace TestTaskMVC.Models
         [JsonPropertyName("id")]
         public int Id { get; set; }
 
-        [JsonPropertyName("Value")]
+        [JsonPropertyName("value")]
         public int Value { get; set; }
 
         [JsonPropertyName("access")]
