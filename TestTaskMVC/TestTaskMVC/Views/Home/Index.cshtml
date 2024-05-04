@@ -42,7 +42,7 @@
     <div id="CoinPanel" class="coins">
         @foreach (var coin in Model.Coins)
         {
-            <button class="btn btn-sm btn-primary coin-button" onclick="CoinChange('@coin.Id','@coin.Value','@coin.Quantity','@coin.Access')">+@coin.Value руб</button>
+            <button class="btn btn-sm btn-primary coin-button coin" disabled="@(!coin.Access)" onclick="CoinChange('@coin.Id','@coin.Value','@coin.Quantity','@coin.Access')">+@coin.Value руб</button>
 
         }
     </div>

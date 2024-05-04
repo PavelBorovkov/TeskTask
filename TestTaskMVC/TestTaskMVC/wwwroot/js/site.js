@@ -6,7 +6,16 @@
 let totalSum = 0;
 let totalSumPay = 0;
 
-
+//document.addEventListener('DOMContentLoaded', function () {
+//    var coinButtons = document.querySelectorAll('.coin'); // Находим все кнопки с классом coin
+//    coinButtons.forEach(function (button) {
+//        var access = button.getAttribute('data-access'); // Предполагаем, что у каждой кнопки есть атрибут data-access
+//        if (access) {
+//            button.disabled = true;
+//        }
+        
+//    });
+//});
 
 function CoinChange(coinId, coinValue, coinQuantity, coinAccess) {
     
