@@ -1,0 +1,33 @@
+﻿
+
+
+@model TestTaskMVC.Models.Product
+
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="@Model.Name" class="col-form-label">Название</label>
+        <input asp-for="Name" type="text" class="form-control" />
+    </div>
+    <div class="mb-5">
+        <label asp-for="@Model.Price" class="col-form-label">Цена</label>
+        <input asp-for="Price" type="text" class="form-control" />
+    </div>
+    <div class="mb-5">
+        <label asp-for="@Model.Quantity" class="col-form-label">Количество</label>
+        <input asp-for="Quantity" type="text" class="form-control" />
+    </div>
+    <div class="mb-5">
+        <label asp-for="@Model.ImgLink" class="col-form-label">Ссылка на изображение</label>
+        <input asp-for="ImgLink" type="text" class="form-control" />
+    </div>
+    <div class="row justify-content-between">
+        <div class="col-3 justify-content-center">
+            <button type="button" class="btn btn-secondary" onclick="editClose()">Закрыть</button>
+        </div>
+        <div class="col-3"></div>
+        <div class="col-3"></div>
+        <div class="col-3 justify-content-center">
+            <input type="button" class="btn btn-primary" value="Добавить" onclick="createProduct(Name.value,Price.value,Quantity.value,ImgLink.value)" />
+        </div>
+    </div>
+</form>

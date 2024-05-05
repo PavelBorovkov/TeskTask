@@ -1,0 +1,29 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model TestTaskMVC.Models.Coin
+
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="mb-3">
+        <label asp-for="@Model.Value" class="col-form-label">Номинал</label>
+        <input asp-for="Value" type="text" class="form-control" />
+    </div>
+    <div class="mb-5">
+        <label asp-for="@Model.Quantity" class="col-form-label">Количество</label>
+        <input asp-for="Quantity" type="text" class="form-control" />
+    </div>
+    <div class="mb-5">
+        <label class="col-form-label">Доступность</label>
+        <input type="checkbox" checked="@Model.Access" id="Checkbox" />
+    </div>    <div class="row justify-content-between">
+        <div class="col-3 justify-content-center">
+            <button type="button" class="btn btn-secondary" onclick="editClose()">Закрыть</button>
+        </div>
+        <div class="col-3"></div>
+        <div class="col-3"></div>
+        <div class="col-3 justify-content-center">
+            <input type="button" class="btn btn-primary" value="Редактировать" onclick="editCoin(Id.value,Value.value,Quantity.value)" />
+        </div>
+    </div>
+</form>

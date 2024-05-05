@@ -5,6 +5,7 @@ using TestTask.Application.Coins.Command.CreateCoin;
 using TestTask.Application.Coins.Command.DeleteCoin;
 using TestTask.Application.Coins.Command.UpdateCoin;
 using TestTask.Application.Coins.Queries.GetCoinList;
+using TestTask.Application.Coins.Queries.GetCoin;
 
 
 namespace TestTask.WebApi.Controllers
@@ -28,8 +29,19 @@ namespace TestTask.WebApi.Controllers
             return Ok(coins);
         }
 
+        [HttpGet]
+        public async Task<ActionResult<Product>> GetCoin(int id)
+        {
+            var query = new GetCoinQuery
+            {
+                Id = id
+            };
+            var result = await Mediator.Send(query);
+            return Ok(result);
+        }
+
         [HttpPost]
-        public async Task<ActionResult<Coin>> CreateCoin([FromForm] CreateCoinCommand createCoinCommand)
+        public async Task<ActionResult<Coin>> CreateCoin([FromBody] CreateCoinCommand createCoinCommand)
         {
             if (createCoinCommand.Value<0)
             {

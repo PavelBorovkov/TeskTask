@@ -14,8 +14,9 @@ namespace DataApiService
     public interface IDataManager
     {
         Task<T> GetItems<T>(string pointName, Dictionary<string, string> getParams = null);
-        Task<T> PostRequest<T>(string pointName, Dictionary<string, string> getParams);
+        Task PostRequest<T>(string pointName, T Parameters);
         Task<T> PutRequest<T>(string pointName, T Parameters);
+        Task<string> DeleteRequest<T>(string pointName, Dictionary<string, string> Parameters);
     }
 
     public class BaseApiOptions
@@ -66,21 +67,19 @@ namespace DataApiService
 
         }
 
-        public async Task<T> PostRequest<T>(string pointName, Dictionary<string, string> getParams)
+        public async Task PostRequest<T>(string pointName, T Parameters)
         {
             using (HttpClient client = new HttpClient())
             {
                 try
                 {
                     string urlService = _options.GetUrlApiService(pointName);
-                    string paramString = JsonConvert.SerializeObject(getParams);
+                    string paramString = JsonConvert.SerializeObject(Parameters);
 
                     var content = new StringContent(paramString, Encoding.UTF8, "application/json-patch+json");
 
                     var response = await client.PostAsync(urlService, content);
-                    string responseContent = await response.Content.ReadAsStringAsync();
-                    var result = JsonConvert.DeserializeObject<T>(responseContent);
-                    return result;
+                    
                 }
                 catch (Exception)
                 {
@@ -88,6 +87,30 @@ namespace DataApiService
                     throw;
                 }
             }
+        }
+
+        public async Task<string> DeleteRequest<T>(string pointName, Dictionary<string, string> Parameters)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    string urlService = _options.GetUrlApiService(pointName);
+                    var paramString = Parameters.ToGetParameters(); ;
+
+                    var url = new Uri($"{urlService}{paramString}");
+
+                    var response = await client.DeleteAsync(url);
+                    string responseContent = await response.Content.ReadAsStringAsync();
+                    return responseContent;
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+
         }
 
         public async Task<T> PutRequest<T>(string pointName, T Parameters)

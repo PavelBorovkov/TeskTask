@@ -28,6 +28,10 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
+    name: "AdminRoute",
+    pattern: "{controller=Admin}/{action=Index}/{key}");
+
+app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 

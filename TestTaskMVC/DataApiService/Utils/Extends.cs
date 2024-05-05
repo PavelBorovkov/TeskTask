@@ -14,7 +14,7 @@ namespace DataApiService.Utils
             {
                 return "";
             }
-            var paramString = "&" + string.Join("&", pars.Select(x => $"{x.Key}={x.Value}"));
+            var paramString = "?" + string.Join("&", pars.Select(x => $"{x.Key}={x.Value}"));
             return paramString;
         }
     }

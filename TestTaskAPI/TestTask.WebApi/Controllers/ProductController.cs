@@ -5,6 +5,7 @@ using TestTask.Application.Products.Command.CreateProduct;
 using TestTask.Application.Products.Command.DeleteProduct;
 using TestTask.Application.Products.Command.UpdateProduct;
 using TestTask.Application.Products.Queries.GetProductList;
+using TestTask.Application.Products.Queries.GetProduct;
 
 namespace TestTask.WebApi.Controllers
 {
@@ -26,9 +27,20 @@ namespace TestTask.WebApi.Controllers
             }
             return Ok(products);
         }
-        
+
+        [HttpGet]
+        public async Task<ActionResult<Product>> GetProduct(Guid id)
+        {
+            var query = new GetProductQuery
+            {
+                Id = id
+            };
+            var result = await Mediator.Send(query);
+            return Ok(result);
+        }
+
         [HttpPost]
-        public async Task<ActionResult<Product>> CreateProduct([FromForm] CreateProductCommand createProductCommand)
+        public async Task<ActionResult<Product>> CreateProduct([FromBody] CreateProductCommand createProductCommand)
         {
             if (string.IsNullOrEmpty(createProductCommand.Name))
             {
